@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Test
 {
-    public class Person : ICustomCompare
+    public class Person : ICustomCompare, IChineseGreeting, IAmericanGreeting
     {
         public int Age { get; set; }
 
@@ -25,6 +25,16 @@ namespace Test
             }
 
             return 0;
+        }
+
+        void IChineseGreeting.SayHello()
+        {
+            Console.WriteLine("你好");
+        }
+
+        void IAmericanGreeting.SayHello()
+        {
+            Console.WriteLine("hello");
         }
     }
 }

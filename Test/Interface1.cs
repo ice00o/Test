@@ -8,4 +8,14 @@ namespace Test
     {
         int CompareTo(Object other);
     }
+
+    interface IChineseGreeting
+    {
+        void SayHello();
+    }
+    interface IAmericanGreeting
+    {
+        void SayHello();
+    }
+
 }

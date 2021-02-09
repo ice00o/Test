@@ -27,6 +27,11 @@ namespace Test
             {
                 Console.WriteLine("P1和P2一样大");
             }
+
+            IChineseGreeting IChinsesG = (IChineseGreeting)P1;
+            IChinsesG.SayHello();
+            IAmericanGreeting IAmericanG = (IAmericanGreeting)P2;
+            IAmericanG.SayHello();
             Console.Read();
         }
 
