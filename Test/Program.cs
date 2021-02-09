@@ -36,24 +36,51 @@ namespace Test
         //    Console.Read();
         //}
 
-        //委托 示例
-        delegate void MyDelegate(int para1, int para2);
-        static void Main(string[] args)
-        {
-            MyDelegate d;
-            d = new MyDelegate(new Program().Add);
-            MyMethod(d);
-            Console.Read();
+        //委托 示例1
+        //delegate void MyDelegate(int para1, int para2);
+        //static void Main(string[] args)
+        //{
+        //    MyDelegate d;
+        //    d = new MyDelegate(new Program().Add);
+        //    MyMethod(d);
+        //    Console.Read();
 
-        }
-        void Add(int para1, int para2)
+        //}
+        //void Add(int para1, int para2)
+        //{
+        //    int sum = para1 + para2;
+        //    Console.WriteLine("两数之和为：" + sum);
+        //}
+        //private static void MyMethod(MyDelegate myDelegate)
+        //{
+        //    myDelegate(1, 2);
+        //}
+
+        //委托 示例2
+        
+        static void Main()
         {
-            int sum = para1 + para2;
-            Console.WriteLine("两数之和为：" + sum);
+            BookDB bookDB = new BookDB();
+            AddBooks(bookDB);
+            Console.WriteLine("Paperback Book Titles:");
+            bookDB.ProcessPaperbackBooks(Printtitle);
+
+            PriceTotaller totaller = new PriceTotaller();
+            bookDB.ProcessPaperbackBooks(totaller.AddBookTotal);
+            Console.WriteLine("Average Paperback Book Price : ${0:#.##}",
+                totaller.AveragePrice());
         }
-        private static void MyMethod(MyDelegate myDelegate)
+        static void Printtitle(Book b)
         {
-            myDelegate(1, 2);
+            Console.WriteLine($"  {b.Title}");
+        }
+
+        static void AddBooks(BookDB bookDB)
+        {
+            bookDB.AddBook("The C Programming Language", "Brian W. Kernighan and Dennis M. Ritchie", 19.95m, true);
+            bookDB.AddBook("The Unicode Standard 2.0", "The Unicode Consortium", 39.95m, true);
+            bookDB.AddBook("The MS-DOS Encyclopedia", "Ray Duncan", 129.95m, false);
+            bookDB.AddBook("Dogbert's Clues for the Clueless", "Scott Adams", 12.00m, true);
         }
     }
 }
